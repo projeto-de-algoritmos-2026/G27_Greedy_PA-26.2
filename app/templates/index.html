@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salas de Cinema</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+  <header class="topo">
+    <div>
+      <p class="sobretitulo">Interval Partitioning · algoritmo guloso</p>
+      <h1>Quantas salas o cinema precisa?</h1>
+      <p class="sub">As sessões são ordenadas pelo horário de início.</p>
+      <p class="sub">Cada uma vai para a sala que ficou livre primeiro; se nenhuma estiver livre, abre uma sala nova.</p>
+    </div>
+    <dl class="numeros">
+      <div><dt>Sessões</dt><dd id="n-sessoes">–</dd></div>
+      <div><dt>Salas abertas</dt><dd id="n-salas">0</dd></div>
+      <div><dt>Profundidade</dt><dd id="n-profundidade">–</dd></div>
+    </dl>
+  </header>
+
+  <section class="controles" aria-label="Controles da animação">
+    <div class="botoes">
+      <button id="btn-inicio" title="Voltar ao início (Home)">⏮</button>
+      <button id="btn-voltar" title="Passo anterior (←)">◀</button>
+      <button id="btn-play" class="principal" title="Reproduzir / pausar (espaço)">▶ Reproduzir</button>
+      <button id="btn-avancar" title="Próximo passo (→)">▶</button>
+      <button id="btn-fim" title="Ir ao resultado final (End)">⏭</button>
+    </div>
+    <label class="velocidade">Velocidade
+      <select id="velocidade">
+        <option value="2000">0,5×</option>
+        <option value="1000" selected>1×</option>
+        <option value="500">2×</option>
+        <option value="250">4×</option>
+      </select>
+
+    </label>
+    <div class="progresso">
+      <span id="passo-texto">Passo 0 de 0</span>
+      <input id="passo-slider" type="range" min="0" max="0" value="0" aria-label="Passo">
+    </div>
+  </section>
+
+  <section class="decisao" id="decisao" aria-live="polite"></section>
+
+  <main class="grade">
+    <section class="cartao timeline-cartao">
+      <h2>Linha do tempo por sala</h2>
+      <div class="timeline" id="timeline"></div>
+      <h3 class="titulo-prof">Sessões simultâneas ao longo do dia</h3>
+      <div id="profundidade"></div>
+      <ul class="legenda" id="legenda"></ul>
+    </section>
+
+    <aside class="lateral">
+      <section class="cartao">
+        <h2>Salas em uso <span class="dica">min-heap por término</span></h2>
+        <ol class="heap" id="heap"></ol>
+      </section>
+      <section class="cartao">
+        <h2>Fila de sessões <span class="dica">ordenada pelo início</span></h2>
+        <ol class="fila" id="fila"></ol>
+      </section>
+    </aside>
+  </main>
+
+  <p class="erro" id="erro" hidden></p>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
