@@ -3,6 +3,8 @@
 **Número da Lista:** Dupla 27<br>
 **Conteúdo da Disciplina:** Algoritmos Gulosos (Interval Partitioning)
 
+Vídeo Apresentação: https://youtu.be/1KSigTWrfAM
+
 ## Alunos
 
 | Matrícula | Aluno |
